@@ -1,0 +1,16 @@
+* Python Sandbox
+** Binary Search
+Given a min and max number, will preform a binary search based on inputs of (h)igher, (l)ower, or (r)ight
+** Brainfucker
+An interpretor for the esoteric programming language Brainfuck, takes a file, ignores all non-Brainfuck commands.
+** Divine The Num
+Given a min and max num guess a random number between the two to see if it matches the random number generated.
+** Hangman
+Given a word file, you can play hangman.
+** Password Gen
+Being provided a password length, will generate a secure random password.
+** Pomodero Timer
+Given a work time and break time, will become a pomodero timer made for productivity.
+** Rock Paper Sissors
+Play Rock Paper Sissors with the computer.
+** Sine Curve
