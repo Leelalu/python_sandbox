@@ -5,10 +5,12 @@ import time
 import sys
 
 
+# Initiate vars
 PTWORK = 0
 PTWAIT = 0
-PTCOUNT = 0
+PTCOUNT = 1
 
+# Test args to assure they are integers
 try:
     PTWORK = int(sys.argv[1])
     PTWAIT = int(sys.argv[2])
@@ -27,3 +29,4 @@ while True:
     time.sleep(int(PTWAIT))
     PTCOUNT += 1
     print("|||Pomodero cycles: ", PTCOUNT, "|||")
+    PTCOUNT = PTCOUNT + 1

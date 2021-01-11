@@ -2,22 +2,34 @@
 import random
 import sys
 
+
 GUESSNUM = 0
 RANDNUM = 0
+MINNUM = 0
+MAXNUM = 0
 
 
-#generat rand int
-RANDNUM = random.randint(1, 20)
+# Retrieve low/high number from args
+try:
+    MINNUM = int(sys.argv[1])
+    MAXNUM = int(sys.argv[2])
+except (IndexError, ValueError):
+    print("Please add a min and max number to the arguments")
+    sys.exit(0)
 
-#gets input assuring value is integer
+# Generat rand int
+RANDNUM = random.randint(MINNUM, MAXNUM)
+
+# Gets input assuring value is integer
 print("Hey supposed human,")
 try:
-    GUESSNUM = int(input("try to divine a number between 1 & 20: "))
+    print("try to divine a number between", MINNUM, "&", MAXNUM, ": ")
+    GUESSNUM = int(input())
 except ValueError:
     print("Please enter in an integer")
     sys.exit()
 
-#compares guess against RANDNUM
+# Compares guess against RANDNUM
 if GUESSNUM > 20:
     print("Little high, but here it was anyway", RANDNUM)
 elif GUESSNUM < 0:

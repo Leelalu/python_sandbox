@@ -5,40 +5,56 @@ import sys
 import readchar
 
 
-cells_pntr = 0
-cells = [ 0 ]
-loop_starts = []
-str_pntr = 0
+# Create vars
+CELLSPNTR = 0
+CELLS = [ 0 ]
+LOOPSTARTS = []
+STRPNTR = 0
+FILESTR = ""
 
+# Attempt to open given file
 try:
-  str = open(sys.argv[1], 'r').read()
+    FILESTR = open(sys.argv[1], 'r').read()
 except IndexError:
-  print('Error: Requires bf file')
-  exit()
+    print('Error: Requires bf file')
+    sys.exit()
 except FileNotFoundError:
-  print('Error: File nonexistent')
-  exit()
+    print('Error: File nonexistent')
+    sys.exit()
 
 
-while str_pntr < len(str):
-  char = str[str_pntr]
+# Main program loop for interpreter
+while STRPNTR < len(FILESTR):
+    char = FILESTR[STRPNTR]
 
-  if not char:
-    break
-  else:
+
+    # Check char, if Brainfuck command process accordingly
     if char == '>':
-      cells_pntr = cells_pntr + 1
-      if cells_pntr > len(cells)-1: cells.append(0)
-    if char == '<':
-      cells_pntr = cells_pntr - 1
-      if cells_pntr < 0: cells_pntr = len(cells)
-    if char == '+': cells[cells_pntr] = cells[cells_pntr]+1
-    if char == '-': cells[cells_pntr] = cells[cells_pntr]-1
-    if char == '.': print(chr(cells[cells_pntr]))
-    if char == ',': cells[cells_pntr] = ord(readchar.readchar())
-    if char == '[': loop_starts.append(str_pntr)
-    if char == ']':
-      if cells[cells_pntr] == 0:loop_starts.pop(-1)
-      else:str_pntr = loop_starts[-1]
+        CELLSPNTR = CELLSPNTR + 1
+        if CELLSPNTR > len(CELLS)-1:
+            CELLS.append(0)
+    elif char == '<':
+        CELLSPNTR = CELLSPNTR - 1
+        if CELLSPNTR < 0:
+            CELLSPNTR = len(CELLS)
+    elif char == '+':
+        CELLS[CELLSPNTR] = CELLS[CELLSPNTR]+1
+    elif char == '-':
+        CELLS[CELLSPNTR] = CELLS[CELLSPNTR]-1
+    elif char == '.':
+        print(chr(CELLS[CELLSPNTR]))
+    elif char == ',':
+        CELLS[CELLSPNTR] = ord(readchar.readchar())
+    elif char == '[':
+        LOOPSTARTS.append(STRPNTR)
+    elif char == ']':
+        if CELLS[CELLSPNTR] == 0:
+            LOOPSTARTS.pop(-1)
+        else:
+            STRPNTR = LOOPSTARTS[-1]
+    # Lack of char represents EOF
+    else:
+        if not char:
+            break
 
-  str_pntr = str_pntr+1
+    STRPNTR = STRPNTR+1

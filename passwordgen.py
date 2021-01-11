@@ -10,17 +10,18 @@ CHARSTR = ""
 PASSWORD = ""
 PASSLEN = 0
 
-# Get int for password lengt
+# Get int for password length
 try:
     PASSLEN = int(sys.argv[1])
 except (ValueError, IndexError):
     print("Needs an number as an argument")
 
-#gen string to retrieve chars from
+# Gen string of charectors
 CHARSTR = string.ascii_letters+string.punctuation+string.digits
 
-#put rand char in password var
+# Put rand char from CHARSTR in password var
 for char in range(PASSLEN):
     PASSWORD += secrets.choice(CHARSTR)
 
+# Output result
 print(PASSWORD)
