@@ -1,4 +1,5 @@
 * Python Sandbox
+A repo for testing ideas and theory within python
 ** Binary Search
 Given a min and max number, will preform a binary search based on inputs of (h)igher, (l)ower, or (r)ight
 ** Brainfucker
@@ -13,4 +14,3 @@ Being provided a password length, will generate a secure random password.
 Given a work time and break time, will become a pomodero timer made for productivity.
 ** Rock Paper Sissors
 Play Rock Paper Sissors with the computer.
-** Sine Curve
